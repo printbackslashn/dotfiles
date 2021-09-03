@@ -162,6 +162,7 @@
     #Funny show-offs
     cmatrix neofetch
     pfetch cowsay
+    bsdgames
 
 
    ];
