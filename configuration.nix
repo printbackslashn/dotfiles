@@ -118,7 +118,7 @@
     keepEnv = true;
   }];
   security.doas.extraConfig = ''
-    permit persist :wheel
+    permit persist keepenv :wheel
   '';
   # Enable sound.
   # sound.enable = true;
@@ -148,11 +148,14 @@
   # $ nix search wget
    environment.systemPackages = with pkgs; [
     neovim rustup# Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    gitFull
+    gitFull python39Full
+    python39Packages.python-lsp-server
     wget alacritty
-    light
+    light atom
+    rust-analyzer
     joplin-desktop
     signal-desktop
+    alsa-utils
 
     #Sys management
     s-tui stress

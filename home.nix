@@ -1,0 +1,1 @@
+/home/mark/.config/nixpkgs/home.nix
