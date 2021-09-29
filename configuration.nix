@@ -147,7 +147,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
-    neovim rustup# Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     neovim rustup
+     micro # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     gitFull python39Full
     python39Packages.python-lsp-server
     wget alacritty
@@ -156,15 +157,28 @@
     joplin-desktop
     signal-desktop
     alsa-utils
+    chromium
+    keepassxc
+
+    #Cybersecurity
+    #metasploit
+    #nmap aircrack-ng
+    #john hashcat
+    #thc-hydra
+    #zap wireshark
+    #I should use a nix shell for this
+    #I did the nix shell thing, infosec.nix
 
     #Sys management
     s-tui stress
     wpa_supplicant_gui
     pavucontrol
+    libsForQt5.kdeconnect-kde
 
     #Funny show-offs
     cmatrix neofetch
     pfetch cowsay
+    bottom
     bsdgames
 
 
@@ -183,9 +197,11 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
+   #networking.firewall.allowedTCPPorts = [ ... ];
+   #networking.firewall.allowedUDPPorts = [ ... ];
+   networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 4000; to = 5000; }];
+   networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  #Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
