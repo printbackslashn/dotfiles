@@ -6,6 +6,8 @@
 { config, pkgs, ... }:
 
 {
+  #Virtualization
+  virtualisation.docker.enable = true;
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -23,7 +25,7 @@
       enable = true;
       extraConfig = ''
         CPU_SCALING_GOVERNOR_ON_AC=performance
-        CPU_SCALING_GOVERNOR_ON_BAT=powersave
+        CPU_SCALING_GOVERNOR_ON_BAT=schedutil
       '';
   };
   
@@ -141,7 +143,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mark = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -158,6 +160,7 @@
     signal-desktop
     alsa-utils
     chromium
+    tor-browser-bundle-bin
     keepassxc
 
     #Cybersecurity
@@ -172,7 +175,7 @@
     #Sys management
     s-tui stress
     wpa_supplicant_gui
-    pavucontrol
+    pavucontrol gcc
     libsForQt5.kdeconnect-kde
 
     #Funny show-offs
