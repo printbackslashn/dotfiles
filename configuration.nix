@@ -19,7 +19,7 @@
  
    };
    environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
-
+  
   #Trying to save battery
   services.tlp = {
       enable = true;
@@ -150,6 +150,8 @@
   # $ nix search wget
    environment.systemPackages = with pkgs; [
      neovim rustup
+     taskwarrior
+
      micro # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     gitFull python39Full
     python39Packages.python-lsp-server
@@ -174,6 +176,8 @@
 
     #Sys management
     s-tui stress
+    openssl bintools-unwrapped
+    pkg-config
     wpa_supplicant_gui
     pavucontrol gcc
     libsForQt5.kdeconnect-kde
