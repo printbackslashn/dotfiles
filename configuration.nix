@@ -6,6 +6,12 @@
 { config, pkgs, ... }:
 
 {
+  #flakes perhaps
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   #Virtualization
   virtualisation.docker.enable = true;
   imports =
@@ -151,6 +157,7 @@
    environment.systemPackages = with pkgs; [
      neovim rustup
      taskwarrior
+     i2p libreoffice
 
      micro # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     gitFull python39Full
